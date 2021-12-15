@@ -1,4 +1,0 @@
-email01.txt OK
-email02.msg OK
-email03.txt SPAM
-email1234.txt OK
