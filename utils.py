@@ -1,3 +1,9 @@
+import os
+
+SPAM_TAG = 'SPAM'
+HAM_TAG = 'OK'
+
+
 def write_to_file():
     f = open('text.txt', 'a', encoding='utf-8')
     f.write('WOW!\n')
@@ -31,3 +37,6 @@ def write_classification_to_file(file, mail_statuses):
             s = "{} {}".format(mail, status)
             f.write(s)
             f.write('\n')
+
+# def get_all_filenames(path):
+#    files = os.listdir(path)
