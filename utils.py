@@ -55,7 +55,6 @@ def return_subject_as_dict_from_body(body):
             dict_out[i] += 1
         else:
             dict_out[i] = 1
-    print(dict_out)
     try:
         dict_out.pop('Subject:')
         return dict_out
