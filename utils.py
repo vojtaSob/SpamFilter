@@ -41,6 +41,7 @@ def write_classification_to_file(file, mail_statuses):
 
 
 def return_subject_as_dict_from_body(body):
+    """Method finds subject in body and returns it as a dict of worlds"""
     data = body.splitlines()
     subject = None
     for i in data:
@@ -63,6 +64,7 @@ def return_subject_as_dict_from_body(body):
 
 
 def make_a_dict_from_body(body):
+    """Returns body as dict of worlds and counts, method cleans mail from headers"""
     lines = body.splitlines()
     for i in range(0, len(lines)):
         if lines[i] == '':
@@ -84,6 +86,7 @@ def make_a_dict_from_body(body):
 
 
 def dict_plus_dict(dict_a, dict_b):
+    """Methods return dict made of two, if dicts got same keys, values are added"""
     dict_out = {}
     dict_out = dict_a.copy()
     for key in dict_b.keys():
@@ -95,6 +98,7 @@ def dict_plus_dict(dict_a, dict_b):
 
 
 def number_of_received(body):
+    """Methods return number of word received in mail"""
     received = 0
     lines = body.splitlines()
     text = []
