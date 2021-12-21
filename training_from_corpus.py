@@ -156,7 +156,7 @@ class Training:
     def calculate_final_key_words_text(self):
         pass
 
-    def calculate_final_key_words_text(self):
+    def calculate_final_key_words_subject(self):
         pass
 
 
