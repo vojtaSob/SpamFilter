@@ -23,6 +23,6 @@ class RandomFilter(BaseFilter):
 
 
 if __name__ == "__main__":
-    naive = NaiveFilter()
-    naive.test("C:\\Users\\vojta\\PycharmProjects\\SpamFilter\\1")
-    print(compute_quality_for_corpus("C:\\Users\\vojta\\PycharmProjects\\SpamFilter\\1"))
+    naive = ParanoidFilter()
+    naive.test("1")
+    print(compute_quality_for_corpus("1"))
