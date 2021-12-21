@@ -1,4 +1,5 @@
 import os
+import re
 
 SPAM_TAG = 'SPAM'
 HAM_TAG = 'OK'
@@ -38,5 +39,69 @@ def write_classification_to_file(file, mail_statuses):
             f.write(s)
             f.write('\n')
 
-# def get_all_filenames(path):
-#    files = os.listdir(path)
+
+def return_subject_as_dict_from_body(body):
+    data = body.splitlines()
+    subject = None
+    for i in data:
+        if i.startswith("Subject:"):
+            subject = i
+    if subject is None:
+        return None
+    data = subject.split()
+    dict_out = {}
+    for i in data:
+        if dict_out.get(i):
+            dict_out[i] += 1
+        else:
+            dict_out[i] = 1
+    print(dict_out)
+    try:
+        dict_out.pop('Subject:')
+        return dict_out
+    except KeyError:
+        return dict_out
+
+
+def make_a_dict_from_body(body):
+    lines = body.splitlines()
+    for i in range(0, len(lines)):
+        if lines[i] == '':
+            i += 1
+            del lines[:i]
+            break
+    text = []
+    for i in lines:
+        text.extend(re.split('<|>| |\n ', i))
+    dict_output = {}
+    while '' in text:
+        text.remove('')
+    for i in text:
+        if dict_output.get(i):
+            dict_output[i] += 1
+        else:
+            dict_output[i] = 1
+    return dict_output
+
+
+def dict_plus_dict(dict_a, dict_b):
+    dict_out = {}
+    dict_out = dict_a.copy()
+    for key in dict_b.keys():
+        if dict_out.get(key):
+            dict_out[key] += dict_b[key]
+        else:
+            dict_out[key] = dict_b[key]
+    return dict_out
+
+
+def number_of_received(body):
+    received = 0
+    lines = body.splitlines()
+    text = []
+    for i in lines:
+        text.extend(re.split('<|>| |\n ', i))
+    for i in text:
+        if i == "Received:":
+            received += 1
+    return received
