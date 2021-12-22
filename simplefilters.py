@@ -8,17 +8,17 @@ from basefilter import BaseFilter
 
 
 class NaiveFilter(BaseFilter):
-    def decide(self):
+    def decide(self, body):
         return HAM_TAG
 
 
 class ParanoidFilter(BaseFilter):
-    def decide(self):
+    def decide(self, body):
         return SPAM_TAG
 
 
 class RandomFilter(BaseFilter):
-    def decide(self):
+    def decide(self, body):
         return random.choice([HAM_TAG, SPAM_TAG])
 
 
